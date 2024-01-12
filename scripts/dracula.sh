@@ -26,6 +26,7 @@ main()
   show_left_sep=$(get_tmux_option "@dracula-show-left-sep" )
   show_right_sep=$(get_tmux_option "@dracula-show-right-sep" )
   show_border_contrast=$(get_tmux_option "@dracula-border-contrast" false)
+  set_border_colors=$(get_tmux_option "@dracula-set-border-colors" true)
   show_day_month=$(get_tmux_option "@dracula-day-month" false)
   show_refresh=$(get_tmux_option "@dracula-refresh-rate" 5)
   show_synchronize_panes_label=$(get_tmux_option "@dracula-synchronize-panes-label" "Sync")
@@ -110,12 +111,14 @@ main()
   tmux set-option -g status-right-length 100
 
   # pane border styling
-  if $show_border_contrast; then
-    tmux set-option -g pane-active-border-style "fg=${light_purple}"
-  else
-    tmux set-option -g pane-active-border-style "fg=${dark_purple}"
+  if $set_border_colors; then
+    if $show_border_contrast; then
+      tmux set-option -g pane-active-border-style "fg=${light_purple}"
+    else
+      tmux set-option -g pane-active-border-style "fg=${dark_purple}"
+    fi
+    tmux set-option -g pane-border-style "fg=${gray}"
   fi
-  tmux set-option -g pane-border-style "fg=${gray}"
 
   # message styling
   tmux set-option -g message-style "bg=${gray},fg=${white}"
