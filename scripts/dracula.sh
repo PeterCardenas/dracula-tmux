@@ -36,17 +36,17 @@ main()
   show_empty_plugins=$(get_tmux_option "@dracula-show-empty-plugins" true)
 
   # Dracula Color Pallette
-  white='#f8f8f2'
-  gray='#44475a'
+  white='#c0caf5'
+  gray='#565f89'
   dark_gray='#282a36'
-  light_purple='#bd93f9'
-  dark_purple='#6272a4'
-  cyan='#8be9fd'
-  green='#50fa7b'
-  orange='#ffb86c'
-  red='#ff5555'
-  pink='#ff79c6'
-  yellow='#f1fa8c'
+  light_purple='#24283b'
+  dark_purple='#1f2335'
+  cyan='#7dcfff'
+  green='#9ece6a'
+  orange='#ff9e64'
+  red='#f7768e'
+  pink='#bb9af7'
+  yellow='#e0af68'
 
   # Handle left icon configuration
   case $show_left_icon in
@@ -121,15 +121,15 @@ main()
   fi
 
   # message styling
-  tmux set-option -g message-style "bg=${gray},fg=${white}"
+  tmux set-option -g message-style "bg=${dark_purple},fg=${white}"
 
   # status bar
-  tmux set-option -g status-style "bg=${gray},fg=${white}"
+  tmux set-option -g status-style "bg=${dark_purple},fg=${white}"
 
   # Status left
   if $show_powerline; then
-    tmux set-option -g status-left "#[bg=${green},fg=${dark_gray}]#{?client_prefix,#[bg=${yellow}],} ${left_icon} #[fg=${green},bg=${gray}]#{?client_prefix,#[fg=${yellow}],}${left_sep}"
-    powerbg=${gray}
+    tmux set-option -g status-left "#[bg=${green},fg=${dark_gray}]#{?client_prefix,#[bg=${yellow}],} ${left_icon} #[fg=${green},bg=${dark_purple}]#{?client_prefix,#[fg=${yellow}],}${left_sep}"
+    powerbg=${dark_purple}
   else
     tmux set-option -g status-left "#[bg=${green},fg=${dark_gray}]#{?client_prefix,#[bg=${yellow}],} ${left_icon}"
   fi
@@ -288,12 +288,12 @@ main()
 
   # Window option
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[fg=${gray},bg=${dark_purple}]${left_sep}#[fg=${white},bg=${dark_purple}] #I #W${current_flags} #[fg=${dark_purple},bg=${gray}]${left_sep}"
+    tmux set-window-option -g window-status-current-format "#[fg=${dark_purple},bg=${gray}]${left_sep}#[fg=${white},bg=${gray}] #I #W${current_flags} #[fg=${gray},bg=${dark_purple}]${left_sep}"
   else
     tmux set-window-option -g window-status-current-format "#[fg=${white},bg=${dark_purple}] #I #W${current_flags} "
   fi
 
-  tmux set-window-option -g window-status-format "#[fg=${white}]#[bg=${gray}] #I #W${flags}"
+  tmux set-window-option -g window-status-format "#[fg=${white}]#[bg=${dark_purple}] #I #W${flags}"
   tmux set-window-option -g window-status-activity-style "bold"
   tmux set-window-option -g window-status-bell-style "bold"
 }
