@@ -69,7 +69,7 @@ main()
   if [ "$show_left_icon_padding" -gt "0" ]; then
     padding="$(printf '%*s' $show_left_icon_padding)"
   fi
-  left_icon="$left_icon$padding"
+  left_icon="#($current_dir/zoom.sh)$left_icon$padding"
 
   # Handle powerline option
   if $show_powerline; then
